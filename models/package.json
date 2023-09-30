@@ -1,0 +1,19 @@
+{
+  "name": "iot-platform",
+  "version": "1.0.0",
+  "description": "Backend of iot platform project",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Omar-shaqra/IOT-platform.git"
+  },
+  "author": "omar shaqra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omar-shaqra/IOT-platform/issues"
+  },
+  "homepage": "https://github.com/Omar-shaqra/IOT-platform#readme"
+}
