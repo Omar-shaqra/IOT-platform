@@ -20,11 +20,15 @@ const projectSchema = mongoose.Schema(
     },
     users: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        ref: "User",
+        userid: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "User",
+        },
+        role: {
+          type: String,
+        },
       },
-      { role: "" },
     ],
   },
   {
