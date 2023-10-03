@@ -1,6 +1,7 @@
 const User = require("../models_/userModel");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../Utils/generateToken.js");
+const bcrypt = require("bcryptjs");
 
 const userAuth = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
