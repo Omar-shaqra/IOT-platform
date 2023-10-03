@@ -1,5 +1,5 @@
 const mqtt = require("mqtt");
-
+const { addMsg } = require("./models/redis/redis");
 const options = {
   protocol: "https",
   host: "mqtt.eclipseprojects.io",
@@ -10,6 +10,8 @@ console.log(client);
 
 client.on("message", (topic, message) => {
   console.log(`Received message on topic ${topic}: ${message}`);
+  addMsg(message);
+
 });
 
 client.publish(
@@ -24,6 +26,7 @@ client.publish(
     }
   }
 );
+س
 
 client.subscribe("location/gps/vehicle1");
 client.subscribe("my_topic");

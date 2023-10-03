@@ -6,4 +6,12 @@ const client = redis.createClient({
 
 client.on("connect", () => console.log("redis connected"));
 
+export const addMsg = async(message) => {
+  let messageKey = Math.floor(Math.random() * 10);
+  const expirationTimeInSeconds = 3 * 24 * 60 * 60; // 3 days in seconds
+  client.setex(messageKey,expirationTimeInSeconds,message, () => {
+    console.log(`Message added successfully`);
+  });
+}
+
 const r_connect = client.connect();
