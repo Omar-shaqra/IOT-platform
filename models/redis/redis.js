@@ -1,10 +1,9 @@
 const redis = require("redis");
 
 const client = redis.createClient({
-  port: 6379,
-  host: "127.0.0.1",
+  url: "rediss://red-ckdreasiibqc73efrvf0:4BbyTJOjnbZP1wyry2GxpITIvNFRooQI@oregon-redis.render.com:6379",
 });
 
 client.on("connect", () => console.log("redis connected"));
 
-client.connect();
+const r_connect = client.connect();
