@@ -26,7 +26,7 @@ const userAuth = asyncHandler(async (req, res) => {
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { fullname, email, password } = req.body;
+  const { fullname, email, password, phone } = req.body;
 
   const userexists = await User.findOne({ email });
 
@@ -38,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
     fullname,
     email,
     password,
+    phone,
   });
   if (user) {
     res.status(201).json({
