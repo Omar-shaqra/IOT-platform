@@ -3,25 +3,32 @@ const mongoose = require("mongoose");
 const senssortSchema = mongoose.Schema(
   {
     key: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: "Senseor",
+      type: String,
+      unique: true,
     },
-
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: "User",
+      required: true,
+      ref: "Users",
     },
     jop_description: {
       type: String,
       required: true,
+    },
+    message: {
+      type: String,
+      require: true,
     },
   },
   {
     timestamps: true,
   }
 );
-const Senssor = mongoose.model("Senssor", senssortSchema);
 
-module.exports = Senssor;
+senssortSchema.path("key").default(function () {
+  return Math.random().toString(36).substring(7);
+});
+
+const Sensor = mongoose.model("Sensors", senssortSchema);
+
+module.exports = Sensor;
