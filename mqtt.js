@@ -10,7 +10,7 @@ console.log(client);
 
 client.on("message", (topic, message) => {
   console.log(`Received message on topic ${topic}: ${message}`);
-  addMsg(message);
+  addMsg(topic, message);
 
 });
 
