@@ -20,6 +20,15 @@ const projectSchema = mongoose.Schema(
     },
     users: [
       {
+<<<<<<< HEAD
+        userid: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "User",
+        },
+        role: {
+          type: String,
+=======
         userID: {
           type: mongoose.Schema.Types.ObjectId,
           required: false,
@@ -28,6 +37,7 @@ const projectSchema = mongoose.Schema(
         role: {
           type: String,
           required: true,
+>>>>>>> d2d02e3938a76513558f05c91b78505f43f7ef8b
         },
       },
     ],
