@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const valueSchema = mongoose.Schema(
   {
-    senssor: {
+    sensor: {
       type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: "Senssor",
+      required: true,
+      ref: "Sensors",
     },
     topic: {
       type: String,
@@ -20,6 +20,6 @@ const valueSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-const Value = mongoose.model("Value", valueSchema);
+const Value = mongoose.model("Values", valueSchema);
 
 module.exports = Value;

@@ -4,14 +4,14 @@ const projectSchema = mongoose.Schema(
   {
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: "User",
+      required: true,
+      ref: "Users",
     },
     sensors: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        required: false,
-        ref: "Senssor",
+        required: true,
+        ref: "Sensor",
       },
     ],
     project_type: {
@@ -20,6 +20,7 @@ const projectSchema = mongoose.Schema(
     },
     users: [
       {
+<<<<<<< HEAD
         userid: {
           type: mongoose.Schema.Types.ObjectId,
           required: false,
@@ -27,6 +28,16 @@ const projectSchema = mongoose.Schema(
         },
         role: {
           type: String,
+=======
+        userID: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "Users",
+        },
+        role: {
+          type: String,
+          required: true,
+>>>>>>> d2d02e3938a76513558f05c91b78505f43f7ef8b
         },
       },
     ],
