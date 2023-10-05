@@ -9,9 +9,8 @@ client.connect();
 
 client.on("connect", () => console.log("redis connected"));
 
-export const addMsg = async(message) => {
-  let messageKey = Math.floor(Math.random() * 10);
-  await client.hSet('messages', messageKey, Buffer.from(message))
+export const addMsg = async(topic, message) => {
+  await client.hSet('messages', topic, Buffer.from(message))
           .then(()=>{
             console.log(`Message added successfully`);
           });
