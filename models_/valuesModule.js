@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const valueSchema = mongoose.Schema(
   {
     sensor: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
       ref: "Sensors",
     },
