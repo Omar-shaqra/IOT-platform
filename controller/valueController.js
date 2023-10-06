@@ -8,7 +8,7 @@ const createValue = asyncHandler(async (sensor_key, topic, value) => {
     topic: topic,
     value: value,
   });
-  res.status(201).json({ data: value_ });
+  console.log(value_);
 });
 
 const getValueOFSenssor = asyncHandler(async (req, res) => {
@@ -19,4 +19,4 @@ const getValueOFSenssor = asyncHandler(async (req, res) => {
   res.json(values);
 });
 
-module.exports = getValueOFSenssor;
+module.exports = { getValueOFSenssor, createValue };
