@@ -1,4 +1,5 @@
 const mqtt = require("mqtt");
+
 const { addMsg } = require("./models/redis/redis");
 const options = {
   protocol: "https",
@@ -6,12 +7,17 @@ const options = {
   port: 1883,
 };
 const client = mqtt.connect(options);
-console.log(client);
+
+if (client) {
+  console.log(client);
+  console.log(
+    `============mqtt server is ready on ${options.host}====================`
+  );
+}
 
 client.on("message", (topic, message) => {
   console.log(`Received message on topic ${topic}: ${message}`);
   addMsg(topic, message);
-
 });
 
 client.publish(
@@ -26,7 +32,6 @@ client.publish(
     }
   }
 );
-س
 
 client.subscribe("location/gps/vehicle1");
 client.subscribe("my_topic");
