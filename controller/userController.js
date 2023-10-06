@@ -1,4 +1,5 @@
 const User = require("../models_/userModel");
+const Project = require("../models_/projectModule");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../Utils/generateToken.js");
 const bcrypt = require("bcryptjs");
@@ -96,4 +97,21 @@ const UpdateuserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { userAuth, getuserProfile, registerUser, UpdateuserProfile };
+const user_projects = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    const project = await Project.find({ owner: user });
+    res.status(200).json(project);
+  } else {
+    return res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+module.exports = {
+  userAuth,
+  getuserProfile,
+  registerUser,
+  UpdateuserProfile,
+  user_projects,
+};
