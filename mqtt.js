@@ -1,6 +1,7 @@
 const mqtt = require("mqtt");
 
 const { addMsg } = require("./models/redis/redis");
+const { createValue } = require("./controller/valueController");
 const options = {
   protocol: "https",
   host: "mqtt.eclipseprojects.io",
@@ -18,6 +19,7 @@ if (client) {
 client.on("message", (topic, message) => {
   console.log(`Received message on topic ${topic}: ${message}`);
   addMsg(topic, message);
+  createValue("1", topic, message);
 });
 
 client.publish(
@@ -37,6 +39,6 @@ client.subscribe("location/gps/vehicle1");
 client.subscribe("my_topic");
 client.subscribe("temp");
 
-setInterval(() => {
-  client.publish("my_topic", "22", { topicAlias: 1 });
-}, 5000);
+// setInterval(() => {
+//   client.publish("my_topic", "22", { topicAlias: 1 });
+// }, 5000);
