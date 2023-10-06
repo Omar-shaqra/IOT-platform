@@ -1,19 +1,18 @@
+const { createClient } = require("redis");
 
-const { createClient } = require('redis');
-
-const client =  createClient({
+const client = createClient({
   url: "rediss://red-ckdreasiibqc73efrvf0:4BbyTJOjnbZP1wyry2GxpITIvNFRooQI@oregon-redis.render.com:6379",
-})
+});
 client.connect();
-
 
 client.on("connect", () => console.log("redis connected"));
 
-export const addMsg = async(topic, message) => {
-  await client.hSet('messages', topic, Buffer.from(message))
-          .then(()=>{
-            console.log(`Message added successfully`);
-          });
-}
+const addMsg = async (topic, message) => {
+  await client.hSet("messages", topic, Buffer.from(message)).then(() => {
+    console.log(`Message added successfully`);
+  });
+};
 
 const r_connect = client.connect();
+
+module.exports = r_connect;
