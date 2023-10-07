@@ -4,7 +4,8 @@ const {
     createSenssor,
     updateSenssor,
     deleteSenssor,
-    getSenssor
+    getSenssor,
+    getAllSenssor
   } = require("../controller/senssorController");
 
 router.post('/createSenssor', createSenssor);
@@ -14,6 +15,9 @@ router.put('/updateSenssor', updateSenssor);
 router.delete('/deleteSenssor', deleteSenssor);
 
 router.get('/getSenssor/:key', getSenssor);
+
+router.get('/getAllSenssors', getAllSenssor);
+
 
 
 

@@ -84,5 +84,6 @@ module.exports = {
     createSenssor,
     updateSenssor,
     deleteSenssor,
-    getSenssor
+    getSenssor,
+    getAllSenssor
 }
