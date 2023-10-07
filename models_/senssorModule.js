@@ -6,18 +6,14 @@ const senssortSchema = mongoose.Schema(
       type: String,
       unique: true,
     },
-    user: {
+    project: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Users",
+      ref: "Project",
     },
     jop_description: {
       type: String,
       required: true,
-    },
-    message: {
-      type: String,
-      require: true,
     },
   },
   {
