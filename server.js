@@ -3,9 +3,11 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const userRoute = require("./routes/User.js");
 const valueRoute = require("./routes/Value");
+const projectRoute = require("./routes/projectRoutes.js");
 
 const redisRoute = require("./routes/Redis.js");
 
+const mqtt = require("./mqtt");
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 
@@ -23,7 +25,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/values", valueRoute);
 app.use("/api/redis", redisRoute);
-
+app.use("/api/projects", projectRoute);
 
 app.use(notFound);
 app.use(errorHandler);
