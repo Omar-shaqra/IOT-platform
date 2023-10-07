@@ -24,3 +24,7 @@ const createSenssor = async (req, res) => {
         throw new Error("Senssor already exists");
     }
 }
+
+module.exports = { 
+    createSenssor
+}

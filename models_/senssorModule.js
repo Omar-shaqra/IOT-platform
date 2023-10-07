@@ -25,6 +25,6 @@ senssortSchema.path("key").default(function () {
   return Math.random().toString(36).substring(7);
 });
 
-const Sensor = mongoose.model("Sensors", senssortSchema);
+const Senssor = mongoose.model("Sensors", senssortSchema);
 
-module.exports = Sensor;
+module.exports = Senssor;
