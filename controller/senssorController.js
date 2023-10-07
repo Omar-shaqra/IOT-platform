@@ -60,5 +60,6 @@ const deleteSenssor = async (req, res) => {
 
 module.exports = { 
     createSenssor,
-    updateSenssor
+    updateSenssor,
+    deleteSenssor
 }
