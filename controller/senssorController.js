@@ -65,8 +65,18 @@ const getSenssor = async (req, res) => {
         .then((doc)=>{
             res.status(200).send(doc);
         })
-        .catch((err)=>{
-            res.status(404),json({ message : 'Senssor not found'});
+        .catch((error)=>{
+            res.status(404),json({ error: error.message});
+        });
+}
+
+const getAllSenssor = async (req, res) => {
+    await Senssor.find()
+        .then((senssors)=>{
+            res.status(200).json(senssors);
+        })
+        .catch((error) => {
+            response.status(500).json({ error: error.message });
         });
 }
 
