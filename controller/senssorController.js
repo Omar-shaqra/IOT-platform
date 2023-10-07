@@ -46,7 +46,16 @@ const updateSenssor = async (req, res) => {
 }
 
 const deleteSenssor = async (req, res) => {
+    const { key } = req.params.key;
 
+    User.findOneAndDelete({key: {$eq:key} }, function (err, docs) { 
+        if (err){ 
+            console.log(err) 
+        } 
+        else{ 
+            res.status(200).json({ message: 'Deleted Senssor' })
+        } 
+    }); 
 }
 
 module.exports = { 
