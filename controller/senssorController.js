@@ -62,12 +62,12 @@ const getSenssor = async (req, res) => {
     const { key } = req.params.key;
 
     Senssor.findOne({age: {$eq:key} })
-    .then((doc)=>{
-        res.status(200).send(doc);
-    })
-    .catch((err)=>{
-        res.status(404),json({ message : 'Senssor not found'});
-    });
+        .then((doc)=>{
+            res.status(200).send(doc);
+        })
+        .catch((err)=>{
+            res.status(404),json({ message : 'Senssor not found'});
+        });
 }
 
 module.exports = { 

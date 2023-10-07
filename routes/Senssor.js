@@ -3,7 +3,8 @@ const router = express.Router();
 const {
     createSenssor,
     updateSenssor,
-    deleteSenssor
+    deleteSenssor,
+    getSenssor
   } = require("../controller/senssorController");
 
 router.post('/createSenssor', createSenssor);
@@ -11,6 +12,8 @@ router.post('/createSenssor', createSenssor);
 router.put('/updateSenssor', updateSenssor);
 
 router.delete('/deleteSenssor', deleteSenssor);
+
+router.get('/getSenssor/:key', getSenssor);
 
 
 
