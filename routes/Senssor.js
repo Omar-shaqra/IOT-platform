@@ -1,10 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const {
-    createSenssor
+    createSenssor,
+    updateSenssor
   } = require("../controller/senssorController");
 
 router.post('/createSenssor', createSenssor);
+
+router.put('/updateSenssor', updateSenssor);
+
 
 
 

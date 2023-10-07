@@ -43,11 +43,9 @@ const updateSenssor = async (req, res) => {
         res.status(404);
         throw new Error("Senssor not found");
     }
-
-
-
 }
 
 module.exports = { 
-    createSenssor
+    createSenssor,
+    updateSenssor
 }
