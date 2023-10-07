@@ -37,12 +37,16 @@ const updateSenssor = async (req, res) => {
     }
 
     try{
-        const doc = await Character.findOneAndUpdate(filter, update, { new: true });
+        const doc = await Senssor.findOneAndUpdate(filter, update, { new: true });
         res.status(200).json({ message: 'Sensor updated successfully'})
     }catch{
         res.status(404);
         throw new Error("Senssor not found");
     }
+}
+
+const deleteSenssor = async (req, res) => {
+
 }
 
 module.exports = { 
