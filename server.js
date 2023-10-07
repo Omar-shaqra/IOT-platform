@@ -5,6 +5,8 @@ const userRoute = require("./routes/User.js");
 const valueRoute = require("./routes/Value");
 
 const redisRoute = require("./routes/Redis.js");
+const senssorRoute = require("./routes/Senssor.js");
+
 
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
@@ -23,6 +25,8 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/values", valueRoute);
 app.use("/api/redis", redisRoute);
+app.use("/api/senssor", senssorRoute);
+
 
 
 app.use(notFound);
