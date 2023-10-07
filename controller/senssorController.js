@@ -53,13 +53,26 @@ const deleteSenssor = async (req, res) => {
             console.log(err) 
         } 
         else{ 
-            res.status(200).json({ message: 'Deleted Senssor' })
+            res.status(200).json({ message : 'Deleted Senssor' })
         } 
     }); 
+}
+
+const getSenssor = async (req, res) => {
+    const { key } = req.params.key;
+
+    Senssor.findOne({age: {$eq:key} })
+    .then((doc)=>{
+        res.status(200).send(doc);
+    })
+    .catch((err)=>{
+        res.status(404),json({ message : 'Senssor not found'});
+    });
 }
 
 module.exports = { 
     createSenssor,
     updateSenssor,
-    deleteSenssor
+    deleteSenssor,
+    getSenssor
 }
