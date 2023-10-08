@@ -65,6 +65,17 @@ class Projects {
     }
     res.status(204).send();
   });
+
+  getNumberOfSensors = asyncHandler(async (req, res) => {
+    const project = await Projectmodel.findById(req.params.id);
+    if (project) {
+      const sensorsCount = project.sensors.length;
+      res.json({ sensorsCount });
+    } else {
+      res.status(404);
+      throw new Error("Project not found");
+    }
+  });
 }
 
 module.exports = Projects;

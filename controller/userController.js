@@ -108,10 +108,17 @@ const user_projects = asyncHandler(async (req, res) => {
   }
 });
 
+const createUser = async (req, res) => {
+  const user = new User(req.body);
+  await user.save();
+  res.send(user);
+};
+
 module.exports = {
   userAuth,
   getuserProfile,
   registerUser,
   UpdateuserProfile,
   user_projects,
+  createUser,
 };
