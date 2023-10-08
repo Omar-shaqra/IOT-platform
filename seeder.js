@@ -44,6 +44,15 @@ const importData = async () => {
     });
     await Project.insertMany(sampleProject);
 
+    const sampleStatus = status.map((Status) => {
+      return {
+        ...Status,
+        sensorID: senssorID,
+        userID: UserID,
+      };
+    });
+    await Status.insertMany(sampleStatus);
+
     console.log("Data Imported!");
     process.exit();
   } catch (error) {

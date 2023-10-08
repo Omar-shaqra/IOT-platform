@@ -4,6 +4,7 @@ const connectDB = require("./config/db.js");
 const userRoute = require("./routes/User.js");
 const valueRoute = require("./routes/Value");
 const projectRoute = require("./routes/projectRoutes.js");
+const statusRoute = require("./routes/Status.js");
 
 const redisRoute = require("./routes/Redis.js");
 
@@ -26,6 +27,7 @@ app.use("/api/users", userRoute);
 app.use("/api/values", valueRoute);
 app.use("/api/redis", redisRoute);
 app.use("/api/projects", projectRoute);
+app.use("/api/status", statusRoute);
 
 app.use(notFound);
 app.use(errorHandler);

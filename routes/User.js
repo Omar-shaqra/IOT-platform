@@ -6,12 +6,13 @@ const {
   registerUser,
   UpdateuserProfile,
   user_projects,
+  createUser,
 } = require("../controller/userController");
 
 const { protect } = require("../middleware/authMiddleware.js");
 
 router.post("/login", userAuth);
-
+router.route("/create").post(createUser);
 router.route("/").post(registerUser);
 router.get("/projects", user_projects);
 router
