@@ -32,6 +32,8 @@ router
     projectobject.deleteproject
   );
 
-router.get("/:id/users" , projectobject.getAllUsersOfProject);
+router.get("/:id/users" , projectobject.getAllUsersOfProject );
+
+router.get("/:id/owner", projectobject.getOwnerOfProject );
 
 module.exports = router;

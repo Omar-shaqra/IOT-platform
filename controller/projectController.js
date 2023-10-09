@@ -87,6 +87,17 @@ class Projects {
       throw new Error("Project not found");
     }
   });
+
+  getOwnerOfProject = asyncHandler(async (req, res) => {
+    const project = await Projectmodel.findById(req.params.id);
+    if(project){
+      const owner = project.owner;
+      res.json({ owner });
+    } else {
+      res.status(404);
+      throw new Error("Project not found");
+    }
+  })
 }
 
 module.exports = Projects;
