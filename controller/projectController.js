@@ -76,6 +76,17 @@ class Projects {
       throw new Error("Project not found");
     }
   });
+
+  getAllUsersOfProject = asyncHandler(async (req, res) => {
+    const project = await Projectmodel.findById(req.params.id);
+    if(project){
+      const users = project.users;
+      res.json({ numberOfUsers: users.length , users:users});
+    } else {
+      res.status(404);
+      throw new Error("Project not found");
+    }
+  });
 }
 
 module.exports = Projects;

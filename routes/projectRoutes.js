@@ -32,4 +32,6 @@ router
     projectobject.deleteproject
   );
 
+router.get("/:id/users" , projectobject.getAllUsersOfProject);
+
 module.exports = router;
