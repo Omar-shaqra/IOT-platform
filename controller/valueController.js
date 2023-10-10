@@ -13,14 +13,13 @@ const createValue = asyncHandler(async (sensor_key, topic, value) => {
 
 const getValueOFSenssor = asyncHandler(async (req, res) => {
   const sensorId = req.params.id;
-
   const sensor = await Sensor.findById(sensorId);
-  if (sensor) {
-    const values = await Value.find({ sensor: sensor }).populate("sensor");
-    res.json(values);
-  } else {
+  if (!sensor) {
     res.status(404);
     throw new Error("Value not found");
+  } else {
+    const values = await Value.find({ sensor: sensor._id }).populate("sensor");
+    res.status(200).json(values);
   }
 });
 
