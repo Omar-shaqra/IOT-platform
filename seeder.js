@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+
 const users = require("./data/users.js");
 const sensors = require("./data/senssors.js");
 const values = require("./data/values.js");
 const projects = require("./data/projects.js");
+const status = require("./data/status.js");
 
 const User = require("./models_/userModel");
 const Sensor = require("./models_/senssorModule");
 const Value = require("./models_/valuesModule");
 const Project = require("./models_/projectModule");
+const Status = require("./models_/statusModule.js");
+
 const connectDB = require("./config/db.js");
 
 dotenv.config();
