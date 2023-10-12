@@ -3,16 +3,16 @@ const asyncHandler = require("express-async-handler");
 
 const addStatus = async (req, res) => {
   try {
-    const { sensorID, userID, project_type, users } = req.body;
+    const { sensorID, userID, status_type, users } = req.body;
 
     const status = await new Status({
       sensorID,
       userID,
-      project_type,
+      status_type,
       users,
     }).save();
 
-    res.Status(201).json(status);
+    res.status(201).json(status);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
