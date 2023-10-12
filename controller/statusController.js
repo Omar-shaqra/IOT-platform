@@ -48,7 +48,7 @@ const updateStatusyId = asyncHandler(async (req, res) => {
 const DeleteStatusByID = asyncHandler(async (req, res) => {
   const status = await Status.findByIdAndDelete(req.params.id);
   if (status) {
-    res.status(200).json({ message: "Todo deleted successfully" });
+    res.status(200).json({ message: " deleted successfully" });
   } else {
     res.status(500);
     throw new Error("Status not found");
