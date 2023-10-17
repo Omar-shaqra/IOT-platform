@@ -1,4 +1,5 @@
 const express = require("express");
+const { valueValidation } = require("../Utils/validator/valueValidator");
 const router = express.Router();
 const { getValueOFSenssor } = require("../controller/valueController");
 

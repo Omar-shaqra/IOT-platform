@@ -1,4 +1,5 @@
 const express = require("express");
+const { statusValidation } = require("../Utils/validator/statusValidation");
 const router = express.Router();
 const {
   getAllStatus,
@@ -8,10 +9,10 @@ const {
   addStatus,
 } = require("../controller/statusController");
 
-router.route("/").post(addStatus);
+router.route("/").post(statusValidation, addStatus);
 router.route("/").get(getAllStatus);
 router.route("/:id").get(getStatusByID);
-router.route("/:id").put(updateStatusyId);
-router.route("/:id").delete(DeleteStatusByID);
+router.route("/:id").put(statusValidation, updateStatusyId);
+router.route("/:id").delete(statusValidation, DeleteStatusByID);
 
 module.exports = router;

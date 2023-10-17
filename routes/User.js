@@ -19,6 +19,6 @@ router.get("/projects", user_projects);
 router
   .route("/profile")
   .get(protect, getuserProfile)
-  .put(protect, UpdateuserProfile);
+  .put(protect, userValidation, UpdateuserProfile);
 
 module.exports = router;
