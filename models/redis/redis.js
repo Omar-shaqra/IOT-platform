@@ -5,7 +5,7 @@ const client = createClient({
 });
 const r_connect = client.connect();
 
-client.on("connect", () => console.log("redis connected"));
+client.on("connect", () => console.log("redis connected "));
 
 const addMsg = async (topic, message) => {
   await client.hSet("messages", topic, Buffer.from(message)).then(() => {
