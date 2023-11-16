@@ -3,6 +3,7 @@ const Sensor = require("../models_/senssorModule");
 const asyncHandler = require("express-async-handler");
 
 const createValue = asyncHandler(async (sensor_key, topic, value) => {
+  console.log("create fun");
   const value_ = await Value.create({
     sensor: sensor_key,
     topic: topic,
