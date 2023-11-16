@@ -38,6 +38,7 @@ client.publish(
 client.subscribe("location/gps/vehicle1");
 client.subscribe("my_topic");
 client.subscribe("temp");
+client.subscribe("mesh_network/from/#");
 
 // setInterval(() => {
 //   client.publish("my_topic", "22", { topicAlias: 1 });
