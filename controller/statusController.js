@@ -3,16 +3,16 @@ const asyncHandler = require("express-async-handler");
 
 const addStatus = async (req, res) => {
   try {
-    const { sensorID, userID, project_type, users } = req.body;
+    const { sensorID, userID, status_type, users } = req.body;
 
     const status = await new Status({
       sensorID,
       userID,
-      project_type,
+      status_type,
       users,
     }).save();
 
-    res.Status(201).json(status);
+    res.status(201).json(status);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -48,9 +48,9 @@ const updateStatusyId = asyncHandler(async (req, res) => {
 const DeleteStatusByID = asyncHandler(async (req, res) => {
   const status = await Status.findByIdAndDelete(req.params.id);
   if (status) {
-    res.json(status);
+    res.status(200).json({ message: " deleted successfully" });
   } else {
-    res.status(404);
+    res.status(500);
     throw new Error("Status not found");
   }
 });
