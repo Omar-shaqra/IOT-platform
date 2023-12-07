@@ -12,7 +12,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware.js");
 
-router.post("/login", userValidation, userAuth);
+router.post("/login", userAuth);
 router.route("/create").post(userValidation, createUser);
 router.route("/").post(userValidation, registerUser);
 router.get("/projects", user_projects);
