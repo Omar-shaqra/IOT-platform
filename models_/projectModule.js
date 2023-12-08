@@ -10,7 +10,6 @@ const projectSchema = mongoose.Schema(
     sensors: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Sensor",
       },
     ],
@@ -22,12 +21,10 @@ const projectSchema = mongoose.Schema(
       {
         userID: {
           type: mongoose.Schema.Types.ObjectId,
-          required: false,
           ref: "Users",
         },
         role: {
           type: String,
-          required: true,
           default: "user",
         },
       },
