@@ -98,13 +98,13 @@ const UpdateuserProfile = asyncHandler(async (req, res) => {
 });
 
 const user_projects = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.params.id);
   if (user) {
-    const project = await Project.find({ owner: user });
+    const project = await Project.find({ owner: user._id });
     res.status(200).json(project);
   } else {
-    return res.status(404);
-    throw new Error("User not found");
+    res.status(404);
+    throw new Error("No projects yet");
   }
 });
 
