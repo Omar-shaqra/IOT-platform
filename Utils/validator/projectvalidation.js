@@ -7,6 +7,8 @@ exports.getprojectValidator = [
 ];
 
 exports.createprojectValidator = [
+  check("name").notEmpty().withMessage("name is required"),
+
   check("owner")
     .notEmpty()
     .withMessage("owner required")

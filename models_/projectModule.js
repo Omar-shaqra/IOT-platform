@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const projectSchema = mongoose.Schema(
   {
+    name: {
+      type: String,
+      unique: true,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
