@@ -108,11 +108,42 @@ const user_projects = asyncHandler(async (req, res) => {
   }
 });
 
-const createUser = asyncHandler(async (req, res) => {
-  const user = new User(req.body);
-  await user.save();
-  res.send(user);
-});
+const createProjectUser = async (req, res) => {
+  try {
+    const { projectId, fullname, email, password, phone } = req.body;
+    const userId = req.params.id;
+    // Validate project ID
+    const project = await Project.findById(projectId);
+    if (!project) return res.status(404).send("Project not found");
+
+    // Validate userId is valid
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).send("User not found");
+
+    // Check if requester is project owner
+    if (!project.owner.equals(user._id)) {
+      return res.status(403).send("Unauthorized");
+    }
+
+    // Add user to user schema
+    const newUser = new User({ fullname, email, password, phone });
+    await newUser.save();
+
+    // Add user to project users
+    project.users.push({
+      userID: newUser._id,
+    });
+
+    await project.save();
+    res.json({
+      message: "User added to project",
+      projectData: project,
+      newUserData: newUser,
+    });
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
+};
 
 const getUsers = asyncHandler(async (req, res, next) => {
   const user = await User.find({});
@@ -146,7 +177,7 @@ module.exports = {
   registerUser,
   UpdateuserProfile,
   user_projects,
-  createUser,
+  createProjectUser,
   getUsers,
   getUser,
   deleteOne,

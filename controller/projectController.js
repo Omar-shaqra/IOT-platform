@@ -79,9 +79,9 @@ class Projects {
 
   getAllUsersOfProject = asyncHandler(async (req, res) => {
     const project = await Projectmodel.findById(req.params.id);
-    if(project){
+    if (project) {
       const users = project.users;
-      res.json({ numberOfUsers: users.length , users:users});
+      res.json({ numberOfUsers: users.length, users: users });
     } else {
       res.status(404);
       throw new Error("Project not found");
@@ -90,14 +90,14 @@ class Projects {
 
   getOwnerOfProject = asyncHandler(async (req, res) => {
     const project = await Projectmodel.findById(req.params.id);
-    if(project){
+    if (project) {
       const owner = project.owner;
       res.json({ owner });
     } else {
       res.status(404);
       throw new Error("Project not found");
     }
-  })
+  });
 }
 
 module.exports = Projects;

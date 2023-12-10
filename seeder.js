@@ -72,7 +72,7 @@ const destroyData = async () => {
     await Sensor.deleteMany();
     await Project.deleteMany();
 
-    await console.log("Data Destroied!");
+    console.log("Data Destroied!");
     process.exit();
   } catch (error) {
     console.log(`${error}`);

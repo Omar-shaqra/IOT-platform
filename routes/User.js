@@ -7,7 +7,7 @@ const {
   registerUser,
   UpdateuserProfile,
   user_projects,
-  createUser,
+  createProjectUser,
   getUser,
   getUsers,
   deleteOne,
@@ -16,10 +16,12 @@ const {
 const { protect } = require("../middleware/authMiddleware.js");
 
 router.post("/login", userAuth);
-router.route("/create").post(userValidation, createUser);
 router.route("/").post(userValidation, registerUser).get(getUsers);
 router.route("/:id").get(getUser).delete(deleteOne);
 router.get("/:id/projects", user_projects);
+
+router.route("/:id").post(createProjectUser);
+
 router
   .route("/profile")
   .get(protect, getuserProfile)
