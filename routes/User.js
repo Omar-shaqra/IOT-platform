@@ -8,13 +8,17 @@ const {
   UpdateuserProfile,
   user_projects,
   createUser,
+  getUser,
+  getUsers,
+  deleteOne,
 } = require("../controller/userController");
 
 const { protect } = require("../middleware/authMiddleware.js");
 
 router.post("/login", userAuth);
 router.route("/create").post(userValidation, createUser);
-router.route("/").post(userValidation, registerUser);
+router.route("/").post(userValidation, registerUser).get(getUsers);
+router.route("/:id").get(getUser).delete(deleteOne);
 router.get("/:id/projects", user_projects);
 router
   .route("/profile")

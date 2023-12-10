@@ -108,11 +108,37 @@ const user_projects = asyncHandler(async (req, res) => {
   }
 });
 
-const createUser = async (req, res) => {
+const createUser = asyncHandler(async (req, res) => {
   const user = new User(req.body);
   await user.save();
   res.send(user);
-};
+});
+
+const getUsers = asyncHandler(async (req, res, next) => {
+  const user = await User.find({});
+  res.status(200).json({ results: user.length, data: user });
+});
+
+const getUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+
+  if (!user) {
+    res.status(404).json({ msg: `no user for this id ${id}` });
+  }
+  res.status(200).json({ data: user });
+});
+
+const deleteOne = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await User.findByIdAndDelete(id);
+
+  if (!user) {
+    return next(new ApiError(`no user for this id ${id}`, 404));
+  }
+
+  res.status(204).send();
+});
 
 module.exports = {
   userAuth,
@@ -121,4 +147,7 @@ module.exports = {
   UpdateuserProfile,
   user_projects,
   createUser,
+  getUsers,
+  getUser,
+  deleteOne,
 };
