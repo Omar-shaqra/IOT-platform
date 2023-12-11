@@ -6,7 +6,7 @@ const senssortSchema = mongoose.Schema(
       type: String,
       unique: true,
     },
-    project: {
+    projectId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Project",
