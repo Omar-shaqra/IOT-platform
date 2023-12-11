@@ -24,7 +24,6 @@ const userValidation = [
     .withMessage("Must be a valid phone number")
     .trim(),
 
-  check("role").notEmpty().withMessage("role is required"),
   validatorMiddleware,
 ];
 

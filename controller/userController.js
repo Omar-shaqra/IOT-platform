@@ -128,10 +128,12 @@ const createProjectUser = async (req, res) => {
     // Add user to user schema
     const newUser = new User({ fullname, email, password, phone });
     await newUser.save();
+    console.log(newUser.fullname);
 
     // Add user to project users
     project.users.push({
       userID: newUser._id,
+      userName: fullname,
     });
 
     await project.save();
@@ -140,6 +142,39 @@ const createProjectUser = async (req, res) => {
       projectData: project,
       newUserData: newUser,
     });
+  } catch (err) {
+    res.status(500).json({ msg: err });
+  }
+};
+const deleteProjectUser = async (req, res) => {
+  try {
+    const { projectId, userId } = req.body;
+    const ownerId = req.params.id;
+    // Validate project ID
+    const project = await Project.findById(projectId);
+    if (!project) return res.status(404).send("Project not found");
+
+    // Validate ownerId is valid
+    const owner = await User.findById(ownerId);
+    if (!owner) return res.status(404).send("User not found");
+
+    // Check if requester is project owner
+    if (!project.owner.equals(owner._id)) {
+      return res.status(403).send("Unauthorized");
+    }
+
+    // Delete user from user schema
+    await User.findByIdAndDelete(userId);
+
+    // Delete user from project users
+
+    // Filter out the user from the users array
+    project.users = project.users.filter((user) => user.userID != userId);
+
+    // Save the updated project
+    await project.save();
+
+    res.status(200).json({ message: "User removed from project", project });
   } catch (err) {
     res.status(500).json({ msg: err });
   }
@@ -181,4 +216,5 @@ module.exports = {
   getUsers,
   getUser,
   deleteOne,
+  deleteProjectUser,
 };

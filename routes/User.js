@@ -11,6 +11,7 @@ const {
   getUser,
   getUsers,
   deleteOne,
+  deleteProjectUser,
 } = require("../controller/userController");
 
 const { protect } = require("../middleware/authMiddleware.js");
@@ -21,6 +22,7 @@ router.route("/:id").get(getUser).delete(deleteOne);
 router.get("/:id/projects", user_projects);
 
 router.route("/:id").post(createProjectUser);
+router.delete("/deleteProjectUser/:id", deleteProjectUser);
 
 router
   .route("/profile")
