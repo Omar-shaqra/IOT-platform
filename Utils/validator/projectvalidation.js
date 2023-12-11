@@ -7,7 +7,16 @@ exports.getprojectValidator = [
 ];
 
 exports.createprojectValidator = [
-  check("name").notEmpty().withMessage("name is required"),
+  check("name")
+    .notEmpty()
+    .withMessage("name is required")
+    .custom((value) => {
+      return Project.findOne({ name: value }).then((project) => {
+        if (project) {
+          return Promise.reject("Name already in use");
+        }
+      });
+    }),
 
   check("owner")
     .notEmpty()

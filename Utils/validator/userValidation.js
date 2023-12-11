@@ -15,7 +15,7 @@ const userValidation = [
     .withMessage("password is required")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,})/)
     .withMessage(
-      `Password must meet requirements are one or more of  [Lowercase letter, Uppercase letter, Number, Special character, Minimum length of 6 ]`
+      "Password must meet requirements are one or more of  { Lowercase letter, Uppercase letter, Number, Special character, Minimum length of 6 }"
     )
     .trim(),
 
