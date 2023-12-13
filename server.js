@@ -12,7 +12,7 @@ const ScheduleRoute = require("./routes/scheduleRoute.js");
 const redisRoute = require("./routes/Redis.js");
 const senssorRoute = require("./routes/Senssor.js");
 
-//const mqtt = require("./mqtt");
+const mqtt = require("./mqtt");
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware.js");
 
