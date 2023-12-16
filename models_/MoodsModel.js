@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const deviceSchema = mongoose.Schema(
+const moodSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -16,9 +16,13 @@ const deviceSchema = mongoose.Schema(
     },
     schedules: [
       {
-        scheduleID: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Schedules",
+        startTime: {
+          type: String,
+          required: true,
+        },
+        endTime: {
+          type: String,
+          required: true,
         },
       },
     ],
@@ -32,6 +36,6 @@ const deviceSchema = mongoose.Schema(
   }
 );
 
-const Device = mongoose.model("Devices", deviceSchema);
+const Moods = mongoose.model("Moods", moodSchema);
 
-module.exports = Device;
+module.exports = Moods;
