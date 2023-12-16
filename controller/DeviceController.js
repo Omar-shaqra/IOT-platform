@@ -25,7 +25,7 @@ exports.getDevice = async (req, res) => {
 exports.createDevice = async (req, res) => {
   const device = new Device(req.body);
   try {
-    const newDevice = await Device.save();
+    const newDevice = await device.save();
     res.status(201).json(newDevice);
   } catch (err) {
     res.status(400).json({ message: err });

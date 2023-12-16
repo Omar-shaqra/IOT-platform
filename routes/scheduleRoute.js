@@ -9,10 +9,10 @@ const {
   deleteSchedule,
 } = require("../controller/scheduleController");
 
-router.route("/").post(ScheduleValidtion, createSchedule);
+router.route("/").post(createSchedule);
 router.route("/").get(getSchedules);
 router.route("/:id").get(getSchedule);
-router.route("/:id").put(ScheduleValidtion, updateSchedule);
-router.route("/:id").delete(ScheduleValidtion, deleteSchedule);
+router.route("/:id").put(updateSchedule);
+router.route("/:id").delete(deleteSchedule);
 
 module.exports = router;

@@ -14,10 +14,14 @@ const deviceSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Users",
     },
-    scheduleID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Schedule",
-    },
+    schedules: [
+      {
+        scheduleID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Schedules",
+        },
+      },
+    ],
     isFav: {
       type: Boolean,
       default: false,

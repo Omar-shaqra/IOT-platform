@@ -9,10 +9,10 @@ const {
   deleteDevice,
 } = require("../controller/DeviceController");
 
-router.route("/").post(DeviceValidator, createDevice);
+router.route("/").post(createDevice);
 router.route("/").get(getDevices);
 router.route("/:id").get(getDevice);
-router.route("/:id").put(DeviceValidator, updateDevice);
-router.route("/:id").delete(DeviceValidator, deleteDevice);
+router.route("/:id").put(updateDevice);
+router.route("/:id").delete(deleteDevice);
 
 module.exports = router;
