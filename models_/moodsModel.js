@@ -6,6 +6,10 @@ const moodsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    isFav: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

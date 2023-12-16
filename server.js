@@ -6,7 +6,7 @@ const valueRoute = require("./routes/Value.js");
 const projectRoute = require("./routes/projectRoutes.js");
 const statusRoute = require("./routes/Status.js");
 const moodsRoutes = require("./routes/moodsRoutes.js");
-const UserMoodRoutes = require("./routes/UserMoodRoutes.js");
+const DeviceRoutes = require("./routes/DeviceRoutes.js");
 const ScheduleRoute = require("./routes/scheduleRoute.js");
 
 const redisRoute = require("./routes/Redis.js");
@@ -35,7 +35,7 @@ app.use("/api/redis", redisRoute);
 app.use("/api/projects", projectRoute);
 app.use("/api/status", statusRoute);
 app.use("/api/moods", moodsRoutes);
-app.use("/api/usermood", UserMoodRoutes);
+app.use("/api/devices", DeviceRoutes);
 app.use("/api/schedule", ScheduleRoute);
 
 app.use(notFound);
