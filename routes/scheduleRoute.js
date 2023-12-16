@@ -7,7 +7,7 @@ const {
   getSchedules,
   updateSchedule,
   deleteSchedule,
-} = require("../controller/moodsController");
+} = require("../controller/scheduleController");
 
 router.route("/").post(ScheduleValidtion, createSchedule);
 router.route("/").get(getSchedules);

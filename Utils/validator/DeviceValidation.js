@@ -1,10 +1,9 @@
 const { check, body } = require("express-validator");
 const validatorMiddleware = require("../../middleware/validatormiddleware");
-const UserMood = require("../../models_/UserMoodModel");
 
-exports.UserMoodValidator = [
-  check("name").notEmpty().trim().required(),
-  check("location").notEmpty().trim().required(),
+exports.DeviceValidator = [
+  check("name").notEmpty().withMessage("name is required"),
+  check("location").notEmpty().withMessage("location required"),
   check("userID").custom((value, { req }) => {
     if (!mongoose.Types.ObjectId.isValid(value)) {
       throw new Error("Invalid userID");
@@ -14,12 +13,6 @@ exports.UserMoodValidator = [
   check("scheduleID").custom((value, { req }) => {
     if (!mongoose.Types.ObjectId.isValid(value)) {
       throw new Error("Invalid scheduleID");
-    }
-    return true;
-  }),
-  check("MoodID").custom((value, { req }) => {
-    if (!mongoose.Types.ObjectId.isValid(value)) {
-      throw new Error("Invalid userMoodID");
     }
     return true;
   }),

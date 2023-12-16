@@ -2,7 +2,7 @@ const { check, body } = require("express-validator");
 const validatorMiddleware = require("../../middleware/validatormiddleware");
 const Schedule = require("../../models_/scheduleModel");
 
-exports.UserMoodValidator = [
+exports.ScheduleValidtion = [
   check("title").trim().isString().notEmpty(),
 
   check("startTime").trim().isDate().notEmpty(),

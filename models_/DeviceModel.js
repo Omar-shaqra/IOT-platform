@@ -18,9 +18,9 @@ const deviceSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Schedule",
     },
-    MoodID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Moods",
+    isFav: {
+      type: Boolean,
+      default: false,
     },
   },
   {

@@ -1,4 +1,4 @@
-const Device = require("../models_/UserMoodModel");
+const Device = require("../models_/DeviceModel");
 
 // Get all moods
 exports.getDevices = async (req, res) => {
