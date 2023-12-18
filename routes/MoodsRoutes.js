@@ -6,13 +6,13 @@ const {
   getMood,
   getMoods,
   updateMood,
-  deleteDevice,
-} = require("../controller/DeviceController");
+  deleteMood,
+} = require("../controller/MoodsController");
 
-router.route("/").post(createMood);
+router.route("/").post(MoodsValidator, createMood);
 router.route("/").get(getMood);
 router.route("/:id").get(getMoods);
-router.route("/:id").put(updateMood);
-router.route("/:id").delete(deleteDevice);
+router.route("/:id").put(MoodsValidator, updateMood);
+router.route("/:id").delete(deleteMood);
 
 module.exports = router;

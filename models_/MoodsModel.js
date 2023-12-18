@@ -1,40 +1,51 @@
 const mongoose = require("mongoose");
 
-const moodSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
-    userID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Users",
-    },
-    schedules: [
-      {
-        startTime: {
-          type: String,
-          required: true,
-        },
-        endTime: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
-    isFav: {
-      type: Boolean,
-      default: false,
-    },
+const moodSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
+
+  type: {
+    type: String,
+    enum: ["light", "music", "temperature"],
+    required: true,
+  },
+
+  data: {
+    type: Object,
+  },
+  userID: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Users",
+  },
+  isFav: {
+    type: Boolean,
+    default: false,
+  },
+  schedules: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Schedule",
+    },
+  ],
+});
+
+// Light mood schema
+moodSchema.virtual("lightSettings").get(function () {
+  return this.data.lightSettings;
+});
+
+// Music mood schema
+moodSchema.virtual("musicSettings").get(function () {
+  return this.data.musicSettings;
+});
+
+// Temperature mood schema
+moodSchema.virtual("temperatureSettings").get(function () {
+  return this.data.temperatureSettings;
+});
 
 const Moods = mongoose.model("Moods", moodSchema);
 

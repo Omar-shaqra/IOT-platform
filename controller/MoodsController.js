@@ -13,8 +13,8 @@ exports.getMoods = async (req, res) => {
 // Get single mood
 exports.getMood = async (req, res) => {
   try {
-    const moods = await Moods.findById(req.params.id);
-    if (!moods) return res.status(404).json({ message: "Moods not found" });
+    const mood = await Moods.findById(req.params.id);
+    if (!mood) return res.status(404).json({ message: "Moods not found" });
     res.json(mood);
   } catch (err) {
     res.status(500).json({ message: err });
@@ -25,8 +25,8 @@ exports.getMood = async (req, res) => {
 exports.createMood = async (req, res) => {
   const moods = new Moods(req.body);
   try {
-    const newDevice = await moods.save();
-    res.status(201).json(newDevice);
+    const newmood = await moods.save();
+    res.status(201).json(newmood);
   } catch (err) {
     res.status(400).json({ message: err });
   }
@@ -49,7 +49,7 @@ exports.updateMood = async (req, res) => {
 };
 
 // Delete mood
-exports.deleteDevice = async (req, res) => {
+exports.deleteMood = async (req, res) => {
   try {
     await Moods.findByIdAndDelete(req.params.id);
     res.json({ message: "Mood deleted successfully" });
