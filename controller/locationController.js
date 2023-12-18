@@ -1,6 +1,6 @@
 const Location = require("../models_/locationModel");
 
-// Get all Location
+// Get all Locations
 exports.getLocations = async (req, res) => {
   try {
     const locations = await Location.find();

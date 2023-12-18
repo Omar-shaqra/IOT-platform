@@ -10,8 +10,8 @@ const {
 } = require("../controller/locationController");
 
 router.route("/").post(locationValidator, createLocation);
-router.route("/").get(getLocation);
-router.route("/:id").get(getLocations);
+router.route("/").get(getLocations);
+router.route("/:id").get(getLocation);
 router.route("/:id").put(locationValidator, updateLocation);
 router.route("/:id").delete(deleteLocation);
 

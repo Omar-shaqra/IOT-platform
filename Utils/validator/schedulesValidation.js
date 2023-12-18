@@ -6,13 +6,13 @@ exports.ScheduleValidator = [
 
   check("start")
     .notEmpty()
-    .isDate()
+
     .custom((value, { req }) => {
       return value < req.body.end;
     }),
   check("end")
     .notEmpty()
-    .isDate()
+
     .custom((value, { req }) => {
       return value > req.body.start;
     }),

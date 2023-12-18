@@ -10,8 +10,8 @@ const {
 } = require("../controller/MoodsController");
 
 router.route("/").post(MoodsValidator, createMood);
-router.route("/").get(getMood);
-router.route("/:id").get(getMoods);
+router.route("/").get(getMoods);
+router.route("/:id").get(getMood);
 router.route("/:id").put(MoodsValidator, updateMood);
 router.route("/:id").delete(deleteMood);
 

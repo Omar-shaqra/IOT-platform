@@ -14,7 +14,7 @@ exports.getMoods = async (req, res) => {
 exports.getMood = async (req, res) => {
   try {
     const mood = await Moods.findById(req.params.id);
-    if (!mood) return res.status(404).json({ message: "Moods not found" });
+    if (!mood) return res.status(404).json({ message: "Mood not found" });
     res.json(mood);
   } catch (err) {
     res.status(500).json({ message: err });
