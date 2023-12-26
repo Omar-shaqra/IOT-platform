@@ -23,7 +23,7 @@ exports.getDevice = async (req, res) => {
 
 // Create new Device
 exports.createDevice = async (req, res) => {
-  const devices = new Location(req.body);
+  const devices = new Device(req.body);
   try {
     const newDevice = await devices.save();
     res.status(201).json(newDevice);
