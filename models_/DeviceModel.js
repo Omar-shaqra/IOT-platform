@@ -13,6 +13,6 @@ const DeviceSchema = new mongoose.Schema({
   ],
   KWH: { type: Number },
 });
-const Device = mongoose.model("Devices", locationSchema);
+const Device = mongoose.model("Devices", DeviceSchema);
 
 module.exports = Device;
