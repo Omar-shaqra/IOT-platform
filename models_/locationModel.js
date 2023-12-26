@@ -5,10 +5,10 @@ const locationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  moods: [
+  devices: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Moods",
+      ref: "Devices",
     },
   ],
 });
