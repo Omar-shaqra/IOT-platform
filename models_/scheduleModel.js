@@ -26,7 +26,7 @@ const scheduleSchema = new mongoose.Schema(
         ],
       },
     ],
-    devices: {
+    device: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Devices",
     },

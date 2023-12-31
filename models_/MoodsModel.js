@@ -16,7 +16,7 @@ const moodSchema = new mongoose.Schema(
     data: {
       type: Object,
     },
-    userID: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Users",
