@@ -45,7 +45,7 @@ const deleteSenssor = async (req, res) => {
 const getSenssor = async (req, res) => {
   const { key } = req.params.key;
 
-  Senssor.findOne({ age: { $eq: key } })
+  Senssor.findOne({ key: { $eq: key } })
     .then((doc) => {
       res.status(200).send(doc);
     })
