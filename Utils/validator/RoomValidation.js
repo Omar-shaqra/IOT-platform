@@ -5,7 +5,7 @@ exports.RoomValidator = [
   check("name")
     .notEmpty()
     .withMessage("name is required like {Home,Room,Car}."),
-  check("image").optional().isURL("image url is wrong"),
+  check("image").optional().isString("image is required"),
   check("user").notEmpty().isMongoId().withMessage("Invalid user id format"),
   check("devices")
     .optional()

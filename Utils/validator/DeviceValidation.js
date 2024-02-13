@@ -5,7 +5,7 @@ exports.DeviceValidator = [
   check("name")
     .notEmpty()
     .withMessage("name is required like {Home,Room,Car}."),
-  check("image").optional().isURL("image url is wrong"),
+  check("image").optional().isString("image is required"),
   check("KWH").optional().isNumeric("KWH should be a Number"),
   check("Room").notEmpty().isMongoId().withMessage("Invalid Room id format"),
   check("schedules")
